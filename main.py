@@ -90,4 +90,4 @@ async def on_ready():
     await tree.sync()
     print(f"{bot.user} is online – JoshHubStealers loadstring generator ready!")
 
-bot.run("MTQ1NTAzNTU3NjY3OTEzNzQzNg.GgfEbd.QxifrjDQxU0l913nOfZjxp1LW4ki7inNaPKmCA")  # ← REPLACE THIS WITH YOUR REAL TOKEN
+bot.run("MTQ1NTAzNTU3NjY3OTEzNzQzNg.G3fgfk.rvWrrB0uenN2eFvCXTXdw4ZSSKQw0CGta6ub94")  # ← REPLACE THIS WITH YOUR REAL TOKEN
